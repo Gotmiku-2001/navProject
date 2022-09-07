@@ -1,4 +1,4 @@
-import { Text, View ,Button,Image,SafeAreaView,StyleSheet } from 'react-native';
+import { Text, View ,Button } from 'react-native';
 import React from 'react';
 
 import {NavigationContainer,DefaultTheme} from '@react-navigation/native'
@@ -8,9 +8,6 @@ import {createDrawerNavigator,
         DrawerItemList,
         DrawerItem
 } from '@react-navigation/drawer';
-import HomeScreen1 from './screens/HomeScreen1';
-import reactlogo from './assets/react_logo.png';
-
 
 const MyTheme = {
   ...DefaultTheme,
@@ -45,14 +42,11 @@ function Nontification() {
 
 function CustomDrawerContent(props){
   return(
-    <SafeAreaView style={{flex:1}}>
-      <DrawerContentScrollView {...props}>
-        <Image source={reactlogo} style={styles.sideMenuProfileIcon}/>
-        <DrawerItemList {...props}/>
-        <DrawerItem label='Close drawer' onPress={()=> props.navigation.closeDrawer()}/>
-        <DrawerItem label='Toggle drawer' onPress={()=> props.navigation.toggleDrawer()}/>
-      </DrawerContentScrollView>
-    </SafeAreaView>
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props}/>
+      <DrawerItem label='Close drawer' onPress={()=> props.navigation.closeDrawer()}/>
+      <DrawerItem label='Toggle drawer' onPress={()=> props.navigation.toggleDrawer()}/>
+    </DrawerContentScrollView>
   );
 
 }
@@ -69,7 +63,7 @@ function MyDrawer(){
       }
     }}
     >
-        <Drawer.Screen name='HomeScreen' component={HomeScreen1}/>
+        <Drawer.Screen name='Feed' component={FeedScreen}/>
         <Drawer.Screen name='Nontification' component={Nontification}/>
       </Drawer.Navigator>
   );
@@ -86,12 +80,3 @@ const App = () => {
 }
 
 export default App
-const styles = StyleSheet.create(
-  {
-    sideMenuProfileIcon: {
-      resizeMode: 'center',
-      width: 100,
-      height: 100,
-      borderRadius: 100 / 2
-      ,alignSelf: 'center',
-    },})
